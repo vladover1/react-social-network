@@ -3,19 +3,26 @@ import classes from './MyPosts.module.scss'
 import Post from "./Post/Post";
 
 
-const MyPosts = ({postsData}) => {
+const MyPosts = ({state}) => {
 
-    let postElements = postsData.map( post => <Post message={post.message} likesCount={post.likesCount}/>)
+    let postElements = state.posts.map( post => <Post message={post.message} likesCount={post.likesCount}/>)
+
+    let newPostElement = React.createRef()
+
+    let addPost = () => {
+        let text = newPostElement.current.value
+        alert(text)
+    }
 
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
             </div>
             <div className={classes.posts}>
