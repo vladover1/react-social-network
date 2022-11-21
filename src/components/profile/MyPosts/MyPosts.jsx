@@ -12,13 +12,14 @@ const MyPosts = ({state, addPost}) => {
     let addPosts = () => {
         let text = newPostElement.current.value
         addPost(text)
+        newPostElement.current.value = ''
     }
 
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <div> 
+                <div>
                     <textarea ref={newPostElement}></textarea>
                 </div>
                 <div>
