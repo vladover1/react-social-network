@@ -7,7 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {Route, Routes} from 'react-router-dom';
 
 
-function App({state, addPost, updateNewPostText}) {
+function App({state, dispatch}) {
     return (
       <div className={classes.wrapper}>
         <Header/>
@@ -15,7 +15,7 @@ function App({state, addPost, updateNewPostText}) {
         <div className={classes.wrapper__content}>
           <Routes>
             <Route path="/dialogs/*" element={<Dialogs state = {state.dialogsPage}  />}/>
-            <Route path="/profile/*" element={<Profile profilePage = {state.profilePage} addPost={addPost} updateNewPostText={updateNewPostText}/>}/>
+            <Route path="/profile/*" element={<Profile profilePage = {state.profilePage} dispatch ={dispatch}/>}/>
           </Routes>
         </div>
       </div>
