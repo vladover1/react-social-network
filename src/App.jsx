@@ -7,14 +7,14 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {Route, Routes} from 'react-router-dom';
 
 
-function App({state, dispatch}) {
+function App({state, dispatch, store}) {
     return (
       <div className={classes.wrapper}>
         <Header/>
         <Navbar/>
         <div className={classes.wrapper__content}>
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs state = {state.dialogsPage}  />}/>
+            <Route path="/dialogs/*" element={<Dialogs store = {store} />}/>
             <Route path="/profile/*" element={<Profile profilePage = {state.profilePage} dispatch ={dispatch}/>}/>
           </Routes>
         </div>
