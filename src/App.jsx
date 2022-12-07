@@ -8,6 +8,7 @@ import {Route, Routes} from 'react-router-dom';
 
 
 function App({state, dispatch, store}) {
+    debugger
     return (
       <div className={classes.wrapper}>
         <Header/>
