@@ -14,8 +14,8 @@ function App({store}) {
         <Navbar/>
         <div className={classes.wrapper__content}>
           <Routes>
-            <Route path="/dialogs/*" element={<DialogsContainer store = {store} />}/>
-            <Route path="/profile/*" element={<Profile store = {store}/>}/>
+            <Route path="/dialogs/*" element={<DialogsContainer/>}/>
+            <Route path="/profile/*" element={<Profile/>}/>
           </Routes>
         </div>
       </div>
