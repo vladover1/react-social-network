@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Users.module.scss";
 import userPhoto from "../../assets/images/users-alt.jpg";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const Users = ({users, currentPage, unfollow, follow, onPageChanged}) => {
 
@@ -31,10 +32,19 @@ const Users = ({users, currentPage, unfollow, follow, onPageChanged}) => {
                     <div>
                         {u.followed
                             ? <button onClick={() => {
-                                unfollow(u.id)
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{withCredentials: true, headers: {'API-KEY': '49b589f4-f11c-47bc-8f88-7b2bd65e96a1'}})
+                                    .then(response => {
+                                    if (response.data.resultCode === 0){
+                                        unfollow(u.id)
+                                    }
+                                })
                             }}>Unfollow</button>
                             : <button onClick={() => {
-                                follow(u.id)
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{withCredentials: true, headers: {'API-KEY': '49b589f4-f11c-47bc-8f88-7b2bd65e96a1'}}).then(response => {
+                                    if (response.data.resultCode === 0){
+                                        follow(u.id)
+                                    }
+                                })
                             }}>Follow</button>}
                     </div>
                 </span>
