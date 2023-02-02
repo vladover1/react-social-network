@@ -7,14 +7,18 @@ const instance = axios.create({
 })
 
 export const userApi ={
-    getUsers(currentPage = 1, pageSize= 5)  {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`,)
+    getUsers(currentPage = 3, pageSize= 10)  {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
-    }
+    },
+
+    follow(userId){
+        return  instance.post(`follow/${userId}`)
+            .then(response => response.data)
+    },
+    unfollow(userId){
+       return instance.delete(`follow/${userId}`)
+            .then(response => response.data)
+    },
 }
 
-
-export const getUsers2 = (currentPage = 1, pageSize= 5) => {
-    return instance.get(`follow?page=${currentPage}&count=${pageSize}`, )
-        .then(response => response.data)
-}
