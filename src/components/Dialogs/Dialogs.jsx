@@ -2,8 +2,9 @@ import React from 'react';
 import classes from './Dialogs.module.scss';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
+import { Navigate } from "react-router-dom";
 
-const Dialogs = ({updateNewMessageBody, sendMessage , dialogsPage}) => {
+const Dialogs = ({updateNewMessageBody, sendMessage , dialogsPage, isAuth}) => {
 
     let dialogsElements = dialogsPage.dialogs.map(dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>)
     let messagesElements = dialogsPage.messages.map(message => <Message message={message.message} key={message.id}/>)
@@ -16,6 +17,10 @@ const Dialogs = ({updateNewMessageBody, sendMessage , dialogsPage}) => {
     let onNewMessageChange = (evt) => {
         let body = evt.target.value
         updateNewMessageBody(body)
+    }
+
+    if (!isAuth){
+        return <Navigate to='/login'/>
     }
 
     return (

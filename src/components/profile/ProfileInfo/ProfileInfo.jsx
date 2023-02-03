@@ -3,9 +3,9 @@ import classes from "./Profileinfo.module.scss";
 import Preloader from "../../common/preloader/Preloader";
 
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile}) => {
 
-    if(props.profile === null){
+    if(profile === null){
         return <Preloader/>
     }
 
@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
                     alt="background"/>
             </div>
             <div className={classes.descriptionBlock}>
-                <img src={props.profile.photos.small} alt='avatar'/>
+                <img src={profile.photos.small} alt='avatar'/>
                 ava+description
             </div>
         </div>
