@@ -3,8 +3,7 @@ import classes from "./Profileinfo.module.scss";
 import Preloader from "../../common/preloader/Preloader";
 import ProfileStatus from "./ProfileStatus"
 
-
-const ProfileInfo = ({profile}) => {
+const ProfileInfo = ({profile, status , updateStatus}) => {
 
     if(profile === null){
         return <Preloader/>
@@ -20,7 +19,7 @@ const ProfileInfo = ({profile}) => {
             </div>
             <div className={classes.descriptionBlock}>
                 <img src={profile.photos.small} alt='avatar'/>
-                <ProfileStatus status={'hello'}/>
+                <ProfileStatus status={status} updateStatus={updateStatus}/>
             </div>
         </div>
     );

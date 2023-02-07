@@ -14,8 +14,9 @@ let reducers = combineReducers({
     auth: authReducer,
 })
 
-let store = createStore(reducers, applyMiddleware(thunk))
+const store = createStore(reducers, applyMiddleware(thunk))
 
 window.store = store
 
 export default store
+
